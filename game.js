@@ -2,13 +2,14 @@ Game = {
 
 	player1 : {
 
-		walkSpeed: 9,
-		groundControl: 3,
-		airControl: 0.2,
+		walkSpeed: 7.5,
+		groundControl: 2.5,
+		airControl: 0.75,
+		verticalControl: 0.2,
 		jumpHeight: 16,
-		shorthopHeight: 6,
+		shorthopHeight: 8,
 		fallAcceleration: 1.4,
-		fallSpeed: 22,
+		fallSpeed: 16,
 
 		hp: 100,
 		energy: 100,
@@ -21,6 +22,17 @@ Game = {
 		grounded: false,
 		jumping: false,
 		doubleJumping: false,
+		holdJump: false,
+		weapon: "SHINE",
+		projectiles: [],
+
+		attack: function(){
+			//TODO
+		},
+
+		altAttack: function(){
+			//TODO
+		},
 
 	},
 

@@ -63,30 +63,40 @@ function gameLoop() {
 	if (Game.keys[82] || Game.keys[84]) {
 
 		// X/Y [r][t] - jump
-		if (!Game.player1.jumping && Game.player1.grounded) {
-			Game.player1.jumping = true
-			Game.player1.grounded = false
-			Game.player1.velY = -Game.player1.jumpHeight
-			Game.keys[82] = false //to prevent instaneous use of double jump
-			Game.keys[84] = false
-		} else if (!Game.player1.doubleJumping) {
-			Game.player1.jumping = true
-			Game.player1.doubleJumping = true
-			Game.player1.grounded = false
-			Game.player1.velY = -Game.player1.jumpHeight
-      if (Game.keys[68]) {
-        if(Game.player1.velX <= Game.player1.walkSpeed/2){
-          Game.player1.velX = Game.player1.walkSpeed/2
-        }
-      }
-      if (Game.keys[65]) {
-        if(Game.player1.velX >= -(Game.player1.walkSpeed/2)){
-          Game.player1.velX = -(Game.player1.walkSpeed/2)
-        }
-      }
-			Game.keys[82] = false
-			Game.keys[84] = false
+		if (!Game.player1.holdJump){
+
+			if (!Game.player1.jumping && Game.player1.grounded) {
+
+				Game.player1.jumping = true
+				Game.player1.grounded = false
+				Game.player1.velY = -Game.player1.jumpHeight
+
+			} else if (!Game.player1.doubleJumping) {
+
+				Game.player1.jumping = true
+				Game.player1.doubleJumping = true
+				Game.player1.grounded = false
+				Game.player1.velY = -Game.player1.jumpHeight
+	      if (Game.keys[68]) {
+	        if(Game.player1.velX <= Game.player1.walkSpeed/2){
+	          Game.player1.velX = Game.player1.walkSpeed/2
+	        }
+	      }
+	      if (Game.keys[65]) {
+	        if(Game.player1.velX >= -(Game.player1.walkSpeed/2)){
+	          Game.player1.velX = -(Game.player1.walkSpeed/2)
+	        }
+	      }
+
+			}
+
+			Game.player1.holdJump = true
+
 		}
+
+	} else {
+
+		Game.player1.holdJump = false
 
 	}
 
@@ -129,14 +139,20 @@ function gameLoop() {
 		// down [s]
 
 	}
+	if (Game.keys[70]) {
+
+		// A [f]
+
+	}
+	if (Game.keys[71]) {
+
+		// B [g]
+
+	}
 
 	//physics
 		//friction
-		if (Game.player1.grounded) {
-			Game.player1.velX *= 0.85
-		} else {
-			Game.player1.velX *= 0.975
-		}
+		Game.player1.velX *= 0.9
 
 		//gravity
 		if (Game.player1.velY + Game.player1.fallAcceleration <= Game.player1.fallSpeed) {
@@ -215,6 +231,7 @@ window.addEventListener("load", gameLoop)
 
 document.body.addEventListener("keydown", function(e){
 	Game.keys[e.keyCode] = true
+	console.log(e.keyCode)
 })
 
 document.body.addEventListener("keyup", function(e){

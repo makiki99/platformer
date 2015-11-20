@@ -11,6 +11,41 @@ body {
 }
 
 div {
-  border: 1px solid black;
   background-color: #cccccc;
+}
+
+#redHP {
+  float: left;
+  width: 150px;
+  font-family: fantasy;
+  font-size: 48px;
+  color: red;
+  background-color: #ffaaaa;
+}
+
+#redEng {
+  float: left;
+  width: 150px;
+  font-family: fantasy;
+  font-size: 48px;
+  color: blue;
+  background-color: #ffaaaa;
+}
+
+#blueHP {
+  float: right;
+  width: 150px;
+  font-family: fantasy;
+  font-size: 48px;
+  color: red;
+  background-color: #aaaaff;
+}
+
+#blueEng {
+  float: right;
+  width: 150px;
+  font-family: fantasy;
+  font-size: 48px;
+  color: blue;
+  background-color: #aaaaff;
 }
